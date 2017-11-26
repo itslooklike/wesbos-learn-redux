@@ -2,14 +2,16 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Single from './Single';
-import PhotoGrid from './PhotoGrid';
+import Single from './components/Single';
+import PhotoGrid from './components/PhotoGrid';
 
-const Main = props => {
+const App = props => {
   return (
     <div>
+      {console.log(props)}
       <h1>
         <Link to="/">Reduxstagram</Link>
+        <Link to="/view">222</Link>
       </h1>
 
       <Route
@@ -18,7 +20,7 @@ const Main = props => {
         render={routeProps => <PhotoGrid routeProps={routeProps} {...props.state} />}
       />
 
-      <Route path="/view/:postId" component={Single} />
+      <Route path="/view" component={Single} />
     </div>
   );
 };
@@ -33,4 +35,4 @@ const disToProps = dis => ({
   },
 });
 
-export default connect(stateToProps, disToProps)(Main);
+export default connect(stateToProps, disToProps)(App);
