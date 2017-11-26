@@ -4,6 +4,7 @@ const Single = props => {
   return (
     <div>
       <h1>Single</h1>
+      {console.log('Single', props)}
     </div>
   );
 };
