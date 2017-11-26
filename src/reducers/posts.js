@@ -2,10 +2,13 @@ import postsData from '../data/posts';
 
 const initialState = postsData;
 
-const posts = (state = initialState, { type, payload }) => {
+const posts = (state = initialState, { type, index }) => {
   switch (type) {
-    case '':
-      return state;
+    case 'INCREMENT_LIKES':
+      const post = state.findIndex(item => item.code === index);
+      const newState = [...state];
+      newState[post].likes += 1;
+      return newState;
     default:
       return state;
   }
