@@ -1,36 +1,90 @@
 import React from "react";
 import styled from "react-emotion";
-import { Button } from "antd";
 import { Card } from "antd";
+import { Button } from "antd";
 
-const Content = styled("div")`padding: 10px 16px;`;
+import Photo from "./Photo";
+
+const Content = styled("div")`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const List = styled("div")`
+  margin-bottom: 20px;
+  margin-left: 20px;
+`;
+
+const CardWrap = styled("div")`margin-bottom: 20px;`;
 
 const Single = props => {
   const { postId } = props.routeProps.match.params;
   const post = props.posts.find(item => item.code === postId);
 
+  let userInput = null;
+  let commentInput = null;
+
   return (
-    <div>
-      <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
+    <Content>
+      <div>
+        <Photo {...post} {...props} />
         <div>
-          <img alt="example" width="100%" src={post.display_src} />
-        </div>
-        <Content>
-          <h3>{post.caption}</h3>
-          <p>
+          <label>
+            user:{" "}
+            <input
+              type="text"
+              ref={input => {
+                userInput = input;
+              }}
+            />
+          </label>
+          <label>
+            text:{" "}
+            <input
+              type="text"
+              ref={input => {
+                commentInput = input;
+              }}
+            />
+          </label>
+          <div>
             <Button
-              type="button"
-              onClick={evt => {
-                evt.preventDefault();
-                props.increment(post.code);
+              onClick={() => {
+                if (userInput.value != "" & commentInput.value != "") {
+                  props.addComment(postId, userInput.value, commentInput.value);
+                  userInput.value = "";
+                  commentInput.value = "";
+                }
               }}
             >
-              👉 {post.likes}
+              add
             </Button>
-          </p>
-        </Content>
-      </Card>
-    </div>
+          </div>
+        </div>
+      </div>
+
+      {props.comments[postId] && (
+        <List>
+          {props.comments[postId].map((item, idx) => (
+            <CardWrap key={idx}>
+              <Card title={item.user} style={{ width: 300 }}>
+                <p>
+                  {item.text}
+                  <span
+                    onClick={() => {
+                      props.removeComment(postId, idx);
+                    }}
+                  >
+                    {" "}
+                    delete
+                  </span>
+                </p>
+              </Card>
+            </CardWrap>
+          ))}
+        </List>
+      )}
+    </Content>
   );
 };
 

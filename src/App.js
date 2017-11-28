@@ -35,6 +35,8 @@ const App = props => {
             routeProps={routeProps}
             {...props.state}
             increment={props.increment}
+            addComment={props.addComment}
+            removeComment={props.removeComment}
           />
         )}
       />

@@ -1,3 +1,4 @@
+import { merge } from 'timm';
 import postsData from "../data/posts";
 
 const initialState = postsData;
