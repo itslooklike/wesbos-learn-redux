@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "react-emotion";
-import { Card } from "antd";
-import { Button } from "antd";
-
+import { Card, Button } from "antd";
 import Photo from "./Photo";
 
 const Content = styled("div")`
@@ -29,28 +27,22 @@ const Single = props => {
       <div>
         <Photo {...post} {...props} />
         <div>
-          <label>
-            user:{" "}
-            <input
-              type="text"
-              ref={input => {
-                userInput = input;
-              }}
-            />
-          </label>
-          <label>
-            text:{" "}
-            <input
-              type="text"
-              ref={input => {
-                commentInput = input;
-              }}
-            />
-          </label>
+          <input
+            type="text"
+            ref={input => {
+              userInput = input;
+            }}
+          />
+          <input
+            type="text"
+            ref={input => {
+              commentInput = input;
+            }}
+          />
           <div>
             <Button
               onClick={() => {
-                if (userInput.value != "" & commentInput.value != "") {
+                if ((userInput.value != "") & (commentInput.value != "")) {
                   props.addComment(postId, userInput.value, commentInput.value);
                   userInput.value = "";
                   commentInput.value = "";

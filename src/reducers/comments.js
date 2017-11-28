@@ -1,4 +1,4 @@
-import { removeAt } from "timm";
+import { removeAt, set, update, addLast } from "timm";
 import commentsData from "../data/comments";
 
 const initialState = commentsData;
@@ -9,15 +9,15 @@ const comments = (
 ) => {
   switch (type) {
     case "ADD_COMMENT":
-      const newState = { ...state };
-      newState[postId]
-        ? newState[postId].push({ text: comment, user: author })
-        : (newState[postId] = [].concat({ text: comment, user: author }));
-      return newState;
+      const newComment = { text: comment, user: author };
+
+      return update(
+        state,
+        postId,
+        val => (val ? addLast(val, newComment) : addLast([], newComment))
+      );
     case "REMOVE_COMMENT":
-      const newStateR = { ...state };
-      newStateR[postId].splice(i, 1);
-      return newStateR;
+      return set(state, [postId], removeAt(state[postId], i));
     default:
       return state;
   }
