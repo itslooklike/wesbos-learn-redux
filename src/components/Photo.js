@@ -1,22 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "react-emotion";
+import { Button } from "antd";
+import { Card } from "antd";
+import { Icon } from "antd";
+
+const Content = styled("div")`padding: 10px 16px;`;
 
 const Photo = props => {
   return (
     <Link to={`/view/${props.code}`}>
-      <img src={props.display_src} width="100" height="100" />
-      <h1>{props.caption}</h1>
-      <div>
-        <button
-          type="button"
-          onClick={evt => {
-            evt.preventDefault();
-            props.increment(props.code);
-          }}
-        >
-          likes: {props.likes}
-        </button>
-      </div>
+      <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
+        <div>
+          <img alt="example" width="100%" src={props.display_src} />
+        </div>
+        <Content>
+          <h3>{props.caption}</h3>
+          <p>
+            <Button
+              onClick={evt => {
+                evt.preventDefault();
+                props.increment(props.code);
+              }}
+            >
+              <Icon type="heart" />&nbsp;{props.likes}
+            </Button>
+
+            <Button onClick={evt => {}}>
+              <Icon type="message" />&nbsp;{props.comments[props.code] ? (
+                props.comments[props.code].length
+              ) : (
+                "0"
+              )}
+            </Button>
+          </p>
+        </Content>
+      </Card>
     </Link>
   );
 };

@@ -1,10 +1,13 @@
-import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import { Link, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import Single from './components/Single';
-import PhotoGrid from './components/PhotoGrid';
-import { increment } from './actions/actionCreators';
+import "antd/dist/antd.css";
+
+import Single from "./components/Single";
+import PhotoGrid from "./components/PhotoGrid";
+import * as actionCreators from "./actions/actionCreators";
 
 const App = props => {
   return (
@@ -17,26 +20,33 @@ const App = props => {
         exact
         path="/"
         render={routeProps => (
-          <PhotoGrid routeProps={routeProps} {...props.state} increment={props.increment} />
+          <PhotoGrid
+            routeProps={routeProps}
+            {...props.state}
+            increment={props.increment}
+          />
         )}
       />
 
       <Route
         path="/view/:postId"
-        render={routeProps => <Single routeProps={routeProps} {...props.state} />}
+        render={routeProps => (
+          <Single
+            routeProps={routeProps}
+            {...props.state}
+            increment={props.increment}
+          />
+        )}
       />
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  state,
+  state
 });
 
-const mapDispatchToProps = dispatch => ({
-  increment: index => {
-    dispatch(increment(index));
-  },
-});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(actionCreators, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
