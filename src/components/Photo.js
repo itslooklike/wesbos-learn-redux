@@ -1,11 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "react-emotion";
-import { Button } from "antd";
-import { Card } from "antd";
-import { Icon } from "antd";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'react-emotion';
 
-const Content = styled("div")`padding: 10px 16px;`;
+import Button from 'antd/lib/button';
+import Card from 'antd/lib/card';
+import Icon from 'antd/lib/icon';
+
+const Content = styled('div')`
+  padding: 10px 16px;
+`;
 
 const Photo = props => {
   return (
@@ -27,11 +30,9 @@ const Photo = props => {
             </Button>
 
             <Button onClick={evt => {}}>
-              <Icon type="message" />&nbsp;{props.comments[props.code] ? (
-                props.comments[props.code].length
-              ) : (
-                "0"
-              )}
+              <Icon type="message" />&nbsp;{props.comments[props.code]
+                ? props.comments[props.code].length
+                : '0'}
             </Button>
           </p>
         </Content>

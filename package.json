@@ -9,9 +9,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "now-start": "serve --single ./build",
+    "build": "react-scripts build && rimraf build/**/*.map",
     "test": "react-scripts test --env=jsdom",
     "clear": "rimraf node_modules build",
+    "analyzer": "node analyzer.js",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
@@ -26,6 +28,8 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "rimraf": "^2.6.2",
-    "timm": "^1.4.0"
+    "serve": "^6.4.1",
+    "timm": "^1.4.0",
+    "webpack-bundle-analyzer": "^2.9.1"
   }
 }

@@ -1,19 +1,24 @@
-import React from "react";
-import styled from "react-emotion";
-import { Card, Button } from "antd";
-import Photo from "./Photo";
+import React from 'react';
+import styled from 'react-emotion';
 
-const Content = styled("div")`
+import Button from 'antd/lib/button';
+import Card from 'antd/lib/card';
+
+import Photo from './Photo';
+
+const Content = styled('div')`
   display: flex;
   flex-wrap: wrap;
 `;
 
-const List = styled("div")`
+const List = styled('div')`
   margin-bottom: 20px;
   margin-left: 20px;
 `;
 
-const CardWrap = styled("div")`margin-bottom: 20px;`;
+const CardWrap = styled('div')`
+  margin-bottom: 20px;
+`;
 
 const Single = props => {
   const { postId } = props.routeProps.match.params;
@@ -42,10 +47,10 @@ const Single = props => {
           <div>
             <Button
               onClick={() => {
-                if ((userInput.value != "") & (commentInput.value != "")) {
+                if ((userInput.value !== '') & (commentInput.value !== '')) {
                   props.addComment(postId, userInput.value, commentInput.value);
-                  userInput.value = "";
-                  commentInput.value = "";
+                  userInput.value = '';
+                  commentInput.value = '';
                 }
               }}
             >
@@ -67,7 +72,7 @@ const Single = props => {
                       props.removeComment(postId, idx);
                     }}
                   >
-                    {" "}
+                    {' '}
                     delete
                   </span>
                 </p>

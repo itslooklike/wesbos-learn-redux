@@ -1,13 +1,13 @@
-import React from "react";
-import { Link, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
 
-import Single from "./components/Single";
-import PhotoGrid from "./components/PhotoGrid";
-import * as actionCreators from "./actions/actionCreators";
+import Single from './components/Single';
+import PhotoGrid from './components/PhotoGrid';
+import * as actionCreators from './actions/actionCreators';
 
 const App = props => {
   return (
@@ -20,11 +20,7 @@ const App = props => {
         exact
         path="/"
         render={routeProps => (
-          <PhotoGrid
-            routeProps={routeProps}
-            {...props.state}
-            increment={props.increment}
-          />
+          <PhotoGrid routeProps={routeProps} {...props.state} increment={props.increment} />
         )}
       />
 
@@ -45,10 +41,9 @@ const App = props => {
 };
 
 const mapStateToProps = state => ({
-  state
+  state,
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(actionCreators, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
