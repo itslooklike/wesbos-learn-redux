@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,18 +17,17 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "antd": "^2.13.10",
-    "emotion": "^8.0.11",
+    "antd": "^3.6.3",
+    "emotion": "^9.2.3",
     "history": "^4.7.2",
-    "raven-js": "^3.20.1",
-    "react-emotion": "^8.0.11",
+    "react-emotion": "^9.2.3",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.8",
-    "redux": "^3.7.2",
+    "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.2",
     "rimraf": "^2.6.2",
-    "serve": "^6.4.1",
+    "serve": "^9.1.0",
     "timm": "^1.4.0",
     "webpack-bundle-analyzer": "^2.9.1"
   }

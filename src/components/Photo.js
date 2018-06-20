@@ -6,6 +6,8 @@ import Button from 'antd/lib/button';
 import Card from 'antd/lib/card';
 import Icon from 'antd/lib/icon';
 
+const TMP_PIC_API = 'https://source.unsplash.com/random/400x400';
+
 const Content = styled('div')`
   padding: 10px 16px;
 `;
@@ -15,7 +17,7 @@ const Photo = props => {
     <Link to={`/view/${props.code}`}>
       <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
         <div>
-          <img alt="example" width="100%" src={props.display_src} />
+          <img alt="example" width="100%" src={TMP_PIC_API} />
         </div>
         <Content>
           <h3>{props.caption}</h3>
